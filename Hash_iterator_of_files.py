@@ -1,7 +1,8 @@
-from subprocess import check_output
-check_output("pip install pyperclip", shell=True)
+# from subprocess import check_output
+# check_output("pip install pyperclip", shell=True)
 
 import hashlib
+import time
 
 def getsha256file(archivo):
     try:
@@ -52,4 +53,4 @@ clipboard.copy(input)
 print('\nItered {} times.'.format(x))
 print('\nLast value: {}.'.format(input))
 print('The hash value is in your paperboard! You can paste using Ctrl + V.')
-print('Prueba')
+time.sleep(5)
