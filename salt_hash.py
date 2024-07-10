@@ -17,12 +17,12 @@ def create_iterated_hash():
     current_hash = getsha256file(file)
 
     salts = ""
-    for i in range(2):
+    for i in range(20):
         randomness = ''.join(random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") for _ in range(10))
         current_hash = getsha256str(current_hash + randomness)
         salts += randomness + "\n"
     
-    filename = f"salts-{current_hash}.txt"
+    filename = f"salts-route-{current_hash}.txt"
 
     with open(filename, "a") as file:
         file.write(f"{current_hash}\n{salts[:-1]}")
@@ -46,7 +46,7 @@ def check_hash():
     if current_hash == target_hash:
         print(f"\n😊 Hash SI coicide!\nEl archivo es original")
     else:
-        print(f"\n🥺 El hash NO coincide.\nEl archivo no es original o la ruta de sal es incorrecta o ha sido manipulada")
+        print(f"\n🥺 El hash NO coincide.\nEl archivo no es original o la ruta de sal ha sido manipulada")
 
 
 while True:
@@ -55,7 +55,7 @@ while True:
     print("2. Chequear hash")
     print("3. Salir")
     
-    choice = input("\nElija una opción (1, 2, 3): ")
+    choice = input("\n> ")
     
     if choice == "1":
         create_iterated_hash()
@@ -65,3 +65,5 @@ while True:
         break
     else:
         print("\nOpción inválida, por favor intente de nuevo.")
+
+    input("\n[ENTER]")
